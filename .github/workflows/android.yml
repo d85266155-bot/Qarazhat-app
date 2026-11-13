@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
   push:
     paths:
-      - 'Qarajat-Android-Project.zip'
+      - '*.zip'
       - '.github/workflows/android.yml'
 
 jobs:
@@ -23,7 +23,7 @@ jobs:
           gradle-version: '8.9'
 
       - name: Extract project
-        run: unzip Qarajat-Android-Project.zip -d source
+        run: unzip -o "$(ls *.zip | head -1)" -d source
 
       - name: Build APK
         run: |
